@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Assignment-6</title>
+    <!-- font awesome cdn  -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- daisiui and tailwind css cdn -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@5"
@@ -23,7 +26,7 @@
     <!-- css connect link -->
     <link rel="stylesheet" href="./style.css" />
   </head>
-  <body>
+  <body class="bg-[#F0FDF4]">
     <!-- nav bar setion -->
     <nav class="bg-[#15803D]">
       <div
@@ -58,7 +61,7 @@
           for future generations.
         </p>
         <button
-          class="bg-[#FACC15] text-[#15803D] py-3 px-5 rounded-4xl font-[16px] font-normal"
+          class="bg-[#FACC15] text-[#15803D] py-3 px-5 rounded-4xl text-[16px] font-normal"
         >
           Get Involved
         </button>
@@ -67,6 +70,115 @@
         <img class="max-md:hidden" src="./assets/hero-leaf2.png" alt="" />
       </div>
     </section>
+
+    <!-- card section  -->
+
+    <section class="my-25 inter">
+      <h2 class="text-center text-3xl font-semibold mb-10">
+        Choose Your Trees
+      </h2>
+      <div class="grid max-md:grid-cols-1 grid-cols-12 gap-7.5 max-w-[1650px] mx-auto">
+        <div class="col-span-2 inter font-medium text-[20px] space-y-5 p-5 max-md:text-center">
+          <h4 class="font-semibold">Categories</h4>
+          <h4 class="hover:bg-[#15803D] hover:text-white hover:rounded-[4px] hover:px-2.5 hover:py-2">All Trees</h4>
+          <h4>Fruit Trees</h4>
+        </div>
+        <div class="grid max-md:grid-cols-1 max-md:justify-center max-md:items-center max-md:text-center col-span-8 grid-cols-3 gap-7.5">
+          <div class="bg-white p-4 rounded-3xl">
+            <div class="rounded-2xl">
+                <img src="./assets/about.png" alt="" />
+            </div>
+            <h4 class="font-semibold text-[14px] mb-8 mt-3">Mango Tree</h4>
+            <p class="font-normal text-[12px] text-[#1F2937] mb-2">
+              A fast-growing tropical tree that produces delicious, juicy
+              mangoes during summer. Its dense green
+            </p>
+            <div class="flex justify-between items-center mb-3">
+                 <button
+                class="bg-[#F0FDF4] text-[#15803D] py-3 px-5 rounded-4xl text-[14px] font-medium"
+                >
+                Get Involved
+                </button>
+                <p class="text-[14px] font-semibold text-[#1F2937]">$500</p>
+                
+            </div>
+             <button
+                class="bg-[#15803D] text-white py-3 px-5 rounded-4xl text-[14px] font-medium w-full"
+                >
+                Add to Cart
+                </button>
+            </div>
+          <div class="bg-white p-4 rounded-3xl">
+            <div class="rounded-2xl">
+                <img src="./assets/about.png" alt="" />
+            </div>
+            <h4 class="font-semibold text-[14px] mb-8 mt-3">Mango Tree</h4>
+            <p class="font-normal text-[12px] text-[#1F2937] mb-2">
+              A fast-growing tropical tree that produces delicious, juicy
+              mangoes during summer. Its dense green
+            </p>
+            <div class="flex justify-between items-center mb-3">
+                 <button
+                class="bg-[#F0FDF4] text-[#15803D] py-3 px-5 rounded-4xl text-[14px] font-medium"
+                >
+                Get Involved
+                </button>
+                <p class="text-[14px] font-semibold text-[#1F2937]">৳500</p>
+                
+            </div>
+             <button
+                class="bg-[#15803D] text-white py-3 px-5 rounded-4xl text-[14px] font-medium w-full"
+                >
+                Add to Cart
+                </button>
+            </div>
+          <div class="bg-white p-4 rounded-3xl">
+            <div class="rounded-2xl">
+                <img src="./assets/about.png" alt="" />
+            </div>
+            <h4 class="font-semibold text-[14px] mb-8 mt-3">Mango Tree</h4>
+            <p class="font-normal text-[12px] text-[#1F2937] mb-2">
+              A fast-growing tropical tree that produces delicious, juicy
+              mangoes during summer. Its dense green
+            </p>
+            <div class="flex justify-between items-center mb-3">
+                 <button
+                class="bg-[#F0FDF4] text-[#15803D] py-3 px-5 rounded-4xl text-[14px] font-medium"
+                >
+                Get Involved
+                </button>
+                <p class="text-[14px] font-semibold text-[#1F2937]">৳500</p>
+                
+            </div>
+             <button
+                class="bg-[#15803D] text-white py-3 px-5 rounded-4xl text-[14px] font-medium w-full"
+                >
+                Add to Cart
+                </button>
+            </div>
+         
+         
+          </div>
+         <div class="col-span-2 inter bg-white p-4">
+            <h2 class="font-semibold text-[20px] mb-2">Your Cart</h2>
+            <div class="flex justify-between items-center bg-[#F0FDF4] px-3 py-2 rounded-2xl  ">
+                <div>
+                    <h2>Mango Tree</h2>
+                    <h2>৳500 x 1</h2>
+                </div>
+                <i class="fa-solid fa-xmark"></i>
+
+            </div>
+            <div class="flex justify-between items-center text-[16px] font-medium mt-2 border-t-2 border-t-gray-200">
+                <h2>Total:</h2>
+                <h2>৳500</h2>
+            </div>
+         </div>
+        </div>
+       
+      </div>
+    </section>
+
     <script src="./index.js"></script>
   </body>
 </html>
