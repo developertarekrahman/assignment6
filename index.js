@@ -2,6 +2,9 @@ const categoryContainer = document.getElementById("catagory-container");
 
 const plantNews = document.getElementById("card");
 
+let bookmarks = [];
+const cartList = document.getElementById("adding-cart");
+
 const loadCategory = () => {
   fetch("https://openapi.programming-hero.com/api/categories")
     .then((res) => res.json())
@@ -48,18 +51,20 @@ const loadPlantByCatagory = (id) => {
 const plantDetails = (plants) => {
   plantNews.innerHTML = "";
   plants.forEach((plant) => {
-    console.log(plant);
+    // console.log(plant);
     plantNews.innerHTML += `
-    <div class="bg-white p-4 rounded-3xl">
+    <div id="${plant.id}" class="bg-white p-4 rounded-3xl">
             <div class=" flex justify-center max-h-52">
                 <img class="rounded-2xl" src="${plant.image}" alt="" />
             </div>
+          
+            <h4 class="font-semibold text-[14px] mb-8 mt-3">${plant.name}</h4>
             <div class="max-h-24 mb-16">
-                <h4 class="font-semibold text-[14px] mb-8 mt-3">${plant.name}</h4>
             <p class="font-normal text-[12px] text-[#1F2937] mb-5">
               ${plant.description}
             </p>
             </div>
+            
             <div class="flex justify-between items-center mb-3">
                  <button
                 class="bg-[#F0FDF4] text-[#15803D] py-3 px-5 rounded-4xl text-[14px] font-medium "
