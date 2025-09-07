@@ -3,3 +3,9 @@
 .inter {
   font-family: "Inter", sans-serif;
 }
+.active {
+  background-color: #15803d;
+  color: white;
+  border-radius: 4px;
+  padding: 10px 8px;
+}

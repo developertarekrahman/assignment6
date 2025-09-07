@@ -5,7 +5,7 @@ const loadCategory = () => {
     .then((res) => res.json())
     .then((data) => {
       const catagories = data.categories;
-      console.log(catagories);
+      //   console.log(catagories);
       showCategory(catagories);
     })
 
@@ -21,11 +21,19 @@ const showCategory = (catagories) => {
     `;
   });
 
-  //   categoryContainer.addEventListener("click", (e) => {
-  //     const allLi = document.querySelectorAll("li");
-  //     allLi.forEach((li) => {
-  //       li.classList.remove("");
-  //     });
+  categoryContainer.addEventListener("click", (e) => {
+    const allLi = document.querySelectorAll("li");
+    allLi.forEach((li) => {
+      li.classList.remove("active");
+    });
+
+    if (e.target.localName === "li") {
+      //   console.log(e.target.id);
+      //   showLoading();
+      e.target.classList.add("active");
+      //   loadNewsByCategory(e.target.id);
+    }
+  });
 };
 
 loadCategory();
