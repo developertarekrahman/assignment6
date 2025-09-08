@@ -36,10 +36,11 @@ const showCategory = (catagories) => {
     if (!clickedLi) return;
 
     const allLi = document.querySelectorAll("#catagory-container li");
+
     allLi.forEach((li) => {
       li.classList.remove("active");
     });
-    showLoading();
+
     clickedLi.classList.add("active");
 
     loadPlantByCatagory(clickedLi.id);
@@ -47,6 +48,7 @@ const showCategory = (catagories) => {
 };
 
 const loadPlantByCatagory = (id) => {
+  showLoading();
   fetch(`https://openapi.programming-hero.com/api/category/${id}`)
     .then((res) => res.json())
     .then((data) => {
@@ -99,7 +101,10 @@ const plantDetails = (plants) => {
 
 const showLoading = () => {
   plantNews.innerHTML = `
-  <div class="bg-red-400 p-10">Loading....</div>
+  <div class = "h-16 w-full flex items-center gap-10" >
+  <h2 class="text-5xl">Loading</h2>
+  <span class="loading loading-spinner loading-xl "></span>
+  </div>
   `;
 };
 
