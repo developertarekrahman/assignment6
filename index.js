@@ -3,7 +3,6 @@ const categoryContainer = document.getElementById("catagory-container");
 const plantNews = document.getElementById("card");
 
 let bookmarks = [];
-const cartList = document.getElementById("adding-cart");
 
 const loadCategory = () => {
   fetch("https://openapi.programming-hero.com/api/categories")
@@ -89,7 +88,7 @@ const plantDetails = (plants) => {
                 
             </div>
              <button
-                class="bg-[#15803D] text-white py-3 px-5 rounded-4xl text-[14px] font-medium w-full"
+                onclick="addToCart('${plant.id}','${plant.name}','${plant.price}')" class="bg-[#15803D] text-white py-3 px-5 rounded-4xl text-[14px] font-medium w-full"
                 >
                 Add to Cart
                 </button>
@@ -124,4 +123,47 @@ const showPlantDetails = (details) => {
   `;
   document.getElementById("my_modal_1").showModal();
 };
+
+const addToCart = (id, name, price) => {
+  bookmarks.push({ id, name, price: Number(price) });
+
+  renderCart();
+};
+const renderCart = () => {
+  const cartList = document.getElementById("adding-cart");
+  cartList.innerHTML = "";
+  let total = 0;
+  bookmarks.forEach((item, index) => {
+    total = total + item.price;
+
+    const div = document.createElement("div");
+    div.classList.add(
+      "flex",
+      "justify-between",
+      "items-center",
+      "bg-[#F0FDF4]",
+      "px-3",
+      "py-2",
+      "rounded-2xl",
+      "mt-2"
+    );
+
+    div.innerHTML = `
+      <div class="flex flex-col">
+        <h2>${item.name}</h2>
+        <h2>৳${item.price}</h2>
+      </div>
+      <i onclick="removeFromCart(${index})" class="fa-solid fa-xmark cursor-pointer"></i>
+      `;
+
+    cartList.appendChild(div);
+  });
+  document.getElementById("cart-total").innerText = `৳${total}`;
+};
+
+const removeFromCart = (index) => {
+  bookmarks.splice(index, 1);
+  renderCart();
+};
+
 loadCategory();
