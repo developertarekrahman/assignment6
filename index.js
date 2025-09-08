@@ -19,24 +19,31 @@ const loadCategory = () => {
     });
 };
 const showCategory = (catagories) => {
-  catagories.forEach((cat) => {
+  categoryContainer.innerHTML = "";
+  catagories.forEach((cat, index) => {
     categoryContainer.innerHTML += `
-     <li id="${cat.id}" class="hover:bg-[#15803D] hover:text-white hover:rounded-[4px] hover:px-2.5 hover:py-2 mb-4 text-center">${cat.category_name}</li>
+     <li id="${
+       cat.id
+     }" class="hover:bg-[#15803D] hover:text-white hover:rounded-[4px] hover:px-2.5 hover:py-2 mb-4 text-center ${
+      index === 0 ? "active" : ""
+    }">${cat.category_name}</li>
 
     `;
   });
+  if (catagories.length > 0) loadPlantByCatagory(catagories[0].id);
 
   categoryContainer.addEventListener("click", (e) => {
-    const allLi = document.querySelectorAll("li");
+    const clickedLi = e.target.closest("li");
+    if (!clickedLi) return;
+
+    const allLi = document.querySelectorAll("#catagory-container li");
     allLi.forEach((li) => {
       li.classList.remove("active");
     });
+    showLoading();
+    clickedLi.classList.add("active");
 
-    if (e.target.localName === "li") {
-      e.target.classList.add("active");
-
-      loadPlantByCatagory(e.target.id);
-    }
+    loadPlantByCatagory(clickedLi.id);
   });
 };
 
@@ -48,10 +55,17 @@ const loadPlantByCatagory = (id) => {
     });
 };
 
+const loadAllPlants = () => {
+  fetch("https://openapi.programming-hero.com/api/plants")
+    .then((res) => res.json())
+    .then((data) => {
+      plantDetails(data.data);
+    });
+};
+
 const plantDetails = (plants) => {
   plantNews.innerHTML = "";
   plants.forEach((plant) => {
-    // console.log(plant);
     plantNews.innerHTML += `
     <div id="${plant.id}" class="bg-white p-4 rounded-3xl">
             <div class=" flex justify-center max-h-52">
@@ -84,5 +98,10 @@ const plantDetails = (plants) => {
   });
 };
 
+const showLoading = () => {
+  plantNews.innerHTML = `
+  <div class="bg-red-400 p-10">Loading....</div>
+  `;
+};
+
 loadCategory();
-loadPlantByCatagory(1);
