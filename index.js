@@ -72,7 +72,7 @@ const plantDetails = (plants) => {
                 <img class="rounded-2xl" src="${plant.image}" alt="" />
             </div>
           
-            <h4 class="font-semibold text-[14px] mb-8 mt-3">${plant.name}</h4>
+            <h4 onclick="loadPlantDetails(${plant.id})" class="font-semibold text-[18px] mb-8 mt-5">${plant.name}</h4>
             <div class="max-h-24 mb-16">
             <p class="font-normal text-[12px] text-[#1F2937] mb-5">
               ${plant.description}
@@ -104,4 +104,24 @@ const showLoading = () => {
   `;
 };
 
+const loadPlantDetails = (id) => {
+  const url = `https://openapi.programming-hero.com/api/plant/${id}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => showPlantDetails(data));
+};
+const showPlantDetails = (details) => {
+  const detailsContainer = document.getElementById("details-container");
+  detailsContainer.innerHTML = `
+   <div class="inter">
+        <h2 class="text-[20px] font-semibold">${details.plants.name}</h2>
+        <img class="mb-2.5 mt-2.5 max-h-80 w-full" src="${details.plants.image}" alt="">
+        <p class="text-[14px] font-normal mb-2.5 "><span class="font-semibold">Catagory:</span> ${details.plants.category}</p>
+        <p class="text-[14px] font-normal mb-2.5"><span class="font-semibold">Price: ৳</span>${details.plants.price}</p>
+        <p class="text-[14px] font-normal "><span class="font-semibold">Description:</span> ${details.plants.description}</p>
+
+      </div>
+  `;
+  document.getElementById("my_modal_1").showModal();
+};
 loadCategory();
